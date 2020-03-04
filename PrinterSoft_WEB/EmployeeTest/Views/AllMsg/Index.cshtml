@@ -1,0 +1,255 @@
+﻿
+@using EmployeeTest.ViewModels;
+@{
+    FileMsgListViewModel tmp = ViewBag.FileMsgListViewModel;
+}
+<!DOCTYPE html>
+<style>
+
+    .box {
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        /*flex-shrink:1;*/
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 280px;
+        position: absolute;
+    }
+
+    .box1 {
+        border: solid 1px #333;
+        border: hidden;
+        /*display:flex;
+        display: inline-flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:stretch;*/
+    }
+
+    .box11 {
+        flex-direction: column;
+        /*height:10px;
+        width:auto;*/
+        border: solid #FF00FF;
+        border: hidden;
+    }
+
+    .box2 {
+        /*height:400px;*/
+        width: 280px;
+        border: solid 2px #808080;
+        border-left: hidden;
+        border-right: hidden;
+        overflow-y: auto;
+    }
+
+    .box3 {
+        /*height:30px;
+          width:280px;
+          top:3px;*/
+        /*display:inline;*/
+        /*position: absolute;*/
+        /*border: solid #333;*/
+        /*border:hidden;*/
+    }
+
+    table {
+        font-size: 30px;
+        border-collapse: collapse;
+        /*border:solid;*/
+        /*border:hidden;*/
+    }
+
+    tr {
+        /*border:solid;*/
+        /*border-color: black;
+        border-left: hidden;*/
+        /*border-right:hidden;*/
+    }
+
+    td {
+        /*border:solid;*/
+        /*border-left: hidden;
+        border-right: hidden;*/
+        /*border:solid;*/
+    }
+
+    .hDiv1 {
+        vertical-align: middle;
+        text-align: left;
+    }
+
+    .hDiv1img {
+        height: 50px;
+    }
+
+    .hDiv2 {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .hDiv2inp {
+        height: 50px;
+    }
+
+    .hDiv3 {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .hDiv3serch {
+        height: 50px;
+    }
+
+    input[type=checkbox] {
+        -ms-transform: scale(2); /* IE */
+        -moz-transform: scale(2); /* FireFox */
+        -webkit-transform: scale(2); /* Safari and Chrome */
+        -o-transform: scale(2); /* Opera */
+    }
+</style>
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    function doAction() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+        //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var a_ele = document.createElement("a", "test");
+        if (isiOS) {
+            a_ele.href = "sms:@tmp.Phone";
+            a_ele.click();
+        }
+        else {
+            a_ele.href = "sms:@tmp.Phone";
+            a_ele.click();
+        }
+    }
+
+    function doPhoneAction() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+        //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var a_ele = document.createElement("a","test1");
+        if (isiOS) {
+            a_ele.href = "tel:@tmp.Phone";
+            a_ele.click();
+        }
+        else {
+            a_ele.href = "tel:@tmp.Phone";
+            a_ele.click();
+        }
+    }
+    function doQQAction() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+        //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var a_ele = document.createElement("a", "test2");
+        if (isiOS) {
+            a_ele.href = "mqqwpa://im/chat?chat_type=wpa&uin=@tmp.QQ&version=1&src_type=web&web_src=oicqzone.com";
+            a_ele.click();
+        }
+        else {
+            a_ele.href = "mqqwpa://im/chat?chat_type=wpa&uin=@tmp.QQ&version=1&src_type=web&web_src=oicqzone.com";
+            a_ele.click();
+        }
+    }
+    function pageload() {
+        var size = {
+            width: window.innerWidth || document.body.clientWidth,
+            height: window.innerHeight || document.body.clientHeight
+        }
+
+        var vw = size.height - size.height * 0.2;
+        $('.box2').css({ 'height': vw + 'px' });
+        //$('td').css({ 'height': size.height * 0.1 + 'px' });
+        $('.box').css({ 'width': size.width + 'px' });
+        $('.box1').css({ 'width': size.width + 'px' });
+        $('.box2').css({ 'width': size.width + 'px' });
+        $('.box3').css({ 'width': size.width + 'px' });
+        $('table').css({ 'width': size.width + 'px' });
+        $('tr').css({ 'width': size.width + 'px' });
+        $('.hDiv1').css({ 'width': size.width * 0.2 + 'px' });
+        $('.hDiv2').css({ 'width': size.width * 0.4 * 0.9 + 'px' });
+        $('.hDiv2inp').css({ 'width': size.width * 0.4 * 0.8 + 'px' });
+        $('.hDiv3').css({ 'width': size.width * 0.4 * 0.9 + 'px' });
+        $('.hDiv3serch').css({ 'width': size.width * 0.4 * 0.8 + 'px' });
+        //$('.hDiv1').css({ 'height': size.height * 0.1 + 'px' });
+        //$('.hDiv1img').css({ 'height': size.height * 0.1 * 0.8 + 'px' });
+        //$('.hDiv2').css({ 'height': size.height * 0.1 + 'px' });
+        //$('.hDiv2inp').css({ 'height': size.height * 0.1 * 0.8 + 'px' });
+        //$('.hDiv3').css({ 'height': size.height * 0.1 + 'px' });
+        //$('.hDiv3serch').css({ 'height': size.height * 0.1*0.8 + 'px' });
+        $('.box1').css({ 'height': size.height * 0.1 + 'px' });
+        $('.box3').css({ 'height': size.height * 1 * 0.1 + 'px' });
+
+    }
+
+    window.onload = pageload;
+
+</script>
+<head>
+</head>
+<body>
+    <div class="box">
+        <div class="box2" id="midDiv">
+            <table border="1">
+                <tr style="height:50px;">
+                    <td width="52" colspan="4" style=" font-family:微软雅黑; text-align:center;border:hidden;">@tmp.UserID</td>
+                    <td width="52" style=" font-family:微软雅黑; color:red; text-align:center;border:hidden;">@tmp.Price 元</td>
+                </tr>
+                @for (int i = 0; i < tmp.FileMsgs.Count; i++)
+                {
+                    <tr style="height:30px;">
+                        <td width="52" colspan="3" style="  text-align:left;border:hidden;">@tmp.FileMsgs[i].FileName</td>
+                        <td width="52" colspan="2" style="  text-align:left;border:hidden;">@tmp.FileMsgs[i].Note</td>
+                    </tr>
+                    <tr style="height:30px;">
+                        <td width="52" style="text-align:left;border:hidden;">@tmp.FileMsgs[i].Pages</td>
+                        <td width="52" style="text-align:left;border:hidden;">@tmp.FileMsgs[i].Count</td>
+                        <td width="52" style="text-align:left;border:hidden;">@tmp.FileMsgs[i].Color</td>
+                        <td width="52" style="text-align:left;border:hidden;">@tmp.FileMsgs[i].VerForm</td>
+                        <td width="52" style="text-align:center;border:hidden;">@tmp.FileMsgs[i].Price 元</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div id="Div_Top" class="box1">
+            <table >
+                <tr style="vertical-align:middle;">
+                    <td class="hDiv1">
+                        备注
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="box3">
+            <table>
+                <tr>
+                    <td colspan="5" height="30" style="border-top:solid #808080;">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td width="70" style="vertical-align:middle;text-align: center;">
+                    </td>
+                    <td width="70" style="vertical-align:middle;text-align: center;">
+                        <input height="50" onclick="doAction()"  type="image" src="~/image/u2513.png" />
+                    </td>
+                    <td width="70" style="vertical-align:middle;text-align: center;">
+                        <input height="50" onclick="doQQAction()" type="image" src="~/image/u2512.png" />
+                    </td>
+                    <td width="70" style="vertical-align:middle;text-align: center;">
+                        <input height="50" onclick="doPhoneAction()" type="image" src="~/image/u2511.png" />
+                    </td>
+                    <td width="70"  style="vertical-align:middle;text-align: center;">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+

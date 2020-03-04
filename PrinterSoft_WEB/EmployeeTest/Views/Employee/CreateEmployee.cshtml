@@ -1,0 +1,96 @@
+﻿@using EmployeeTest.ViewModels;
+@{
+/**/
+    @model CreateEmployeeViewModel
+        /**/
+
+        //Layout = "~/Views/Shared/MyLayout.cshtml"; 
+    }
+<style>
+
+    .table1 {
+        /*border: solid;*/
+        border-collapse: collapse;
+    }
+
+    tr {
+    }
+
+    .w {
+        height: 30px;
+    }
+
+    td {
+    }
+
+    .txt {
+        height: 30px;
+    }
+</style>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-1.8.0.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/WebQR.js"></script>
+<script type="text/javascript">
+    function pageload() {
+        var size = {
+            width: window.innerWidth || document.body.clientWidth,
+            height: window.innerHeight || document.body.clientHeight
+        }
+        //$('td').css({ 'width': size.width*0.1 + 'px' });
+        //$('.table1').css({ 'width': size.width*0.8 + 'px' });
+        //$('tr').css({ 'width': size.width * 0.8 + 'px' });
+        $('.w').css({ 'width': size.width * 0.8 + 'px' });
+
+
+        $('.txt').css({ 'width': size.width * 0.8 - 40 + 'px' });
+        //$('.txt').css({ 'height': size.width * 0.05 + 'px' });
+    }
+    window.onload = pageload;
+
+</script>
+
+<body>
+    <form method="post" action="~/Employee/SaveEmployee">
+        <table align="center" class="table1">
+            <tr>
+                <td align="center">用户添加</td>
+            </tr>
+            <tr>
+                <td align="center" style="height:20px;"></td>
+            </tr>
+            <tr>
+                <td valign="middle" align="center" style="border:1px solid #808080;border-radius:3px;">
+                    <img style="vertical-align:middle;" src="~/image/u2606.png" /><span>  </span><input class="txt" type="text" name="UserID" placeholder="账号" style="border:hidden;" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="height:20px;color:red;">@Html.ValidationMessageFor(c => c.UserID)</td>
+            </tr>
+            <tr>
+                <td valign="middle" align="center" style="border:1px solid #808080;border-radius:3px;">
+                    <img style="vertical-align:middle;" src="~/image/u2607.png" /><span> </span><input class="txt" type="text" name="Password" placeholder="密码" style="border:hidden;" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="height:20px;color:red;"> @Html.ValidationMessageFor(c => c.Password)</td>
+            </tr>
+            <tr>
+                <td valign="middle" align="center" style="border:1px solid #808080;border-radius:3px;">
+                    <img style="vertical-align:middle;" src="~/image/u2607.png" /><span> </span><input class="txt" type="text" name="rePassword" placeholder="密码" style="border:hidden;" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="height:20px;">
+                    <span style="color:red;">@Html.ValidationMessageFor(c => c.rePassword)</span> 
+                    @Html.ValidationMessage("AddErr", new { style = "color:red;" })
+                </td>
+            </tr>
+            <tr>
+                <td align="center"><input class="w" style="border:hidden;background-color:dodgerblue;color:white;border-radius:3px;" type="submit" name="BtnSubmit" value="添  加"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+

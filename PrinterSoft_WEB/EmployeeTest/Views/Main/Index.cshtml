@@ -1,0 +1,393 @@
+﻿
+@using EmployeeTest.ViewModels;
+@{
+    @*@model GroupMsgListViewModel;*@
+GroupMsgListViewModel tmp = ViewBag.GroupMsgListViewModel;
+}
+<!DOCTYPE html>
+<style>
+    nav {
+        margin: 0px auto;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    nav ul {
+        list-style-type: none;
+        padding: 0 20px;
+        display: inline-table;
+        position: relative;
+        /*background: #999;*/
+    }
+
+    nav ul ul {
+        display: none;
+    }
+
+    nav ul li {
+        float: left;
+        /*height:50px;
+        width:100px;
+        position:relative;*/
+        border: solid 1px #808080;
+    }
+
+    nav ul::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 25px 40px;
+        color: #000;
+        text-decoration: none;
+        font-family: "微软雅黑";
+        font-size: 30px;
+    }
+
+    nav ul li:hover {
+        background: linear-gradient(to bottom,#4f5964,#5f6975);
+    }
+
+    nav ul li:hover a {
+        color: #FFF;
+    }
+
+    #target_1:target, #target_2:target, #target_3:target, #target_4:target {
+        /*display: block;*/
+    }
+
+    nav ul ul {
+        background: #5f6975;
+        border-radius: 0;
+        position: absolute;
+        bottom: 100%;
+        width: 230px;
+        padding: 0;
+    }
+
+    nav ul ul li {
+        float: none;
+        /*vertical-align:middle;*/
+        border-top: 1px solid #6b727c;
+        border-bottom: 1px solid #575f6a;
+    }
+
+    nav ul ul li a:hover {
+        background: #4b545f;
+    }
+
+    .box {
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        /*flex-shrink:1;*/
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 280px;
+        position: absolute;
+    }
+
+    .box1 {
+        border: solid 1px #333;
+        border: hidden;
+        /*display:flex;
+        display: inline-flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:stretch;*/
+    }
+
+    .box11 {
+        flex-direction: column;
+        /*height:10px;
+        width:auto;*/
+        border: solid #FF00FF;
+        border: hidden;
+    }
+
+    .box2 {
+        /*height:400px;*/
+        width: 280px;
+        border: solid 2px #808080;
+        border-left: hidden;
+        border-right: hidden;
+        overflow-y: auto;
+    }
+
+    .box3 {
+        /*height:30px;
+          width:280px;
+          top:3px;*/
+        /*display:inline;*/
+        /*position: absolute;*/
+        border: solid #333;
+        /*border:hidden;*/
+    }
+
+    table {
+        font-size: 30px;
+        border-collapse: collapse;
+        /*border:solid;*/
+        /*border:hidden;*/
+    }
+
+    tr {
+        /*border:solid;*/
+        border-color: black;
+        border-left: hidden;
+        /*border-right:hidden;*/
+    }
+
+    td {
+        /*border:solid;*/
+        border-left: hidden;
+        border-right: hidden;
+        /*border:solid;*/
+    }
+
+    .hDiv1 {
+        vertical-align: middle;
+        text-align: left;
+    }
+
+    .hDiv1img {
+        height: 50px;
+    }
+
+    .hDiv2 {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .hDiv2inp {
+        height: 50px;
+    }
+
+    .hDiv3 {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .hDiv3serch {
+        height: 50px;
+    }
+
+    input[type=checkbox] {
+        -ms-transform: scale(2); /* IE */
+        -moz-transform: scale(2); /* FireFox */
+        -webkit-transform: scale(2); /* Safari and Chrome */
+        -o-transform: scale(2); /* Opera */
+    }
+</style>
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    function DoWork() {
+        var timeout = setTimeout(function () {
+
+        },
+            5000 //超时时间，考虑到网络问题，5秒还是比较合理的
+        );
+
+        $.post(url, function (data) {
+            if (timeout) { //清除定时器
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            //该干嘛干嘛
+        });
+    }
+
+    function Phone_PickUp() {
+        //$.post('/QRcode/QRcodeDecode', { "img": canvas.toDataURL().substr(22) }, function (data, status) {
+        //    if (status == "success" && data != "no")
+        //        location.href = "/QRcode/Result/" + data;
+        //}, "text");
+    }
+    function Phone_SelfPickUp() {
+
+    }
+    function Phone_DelayPickUp() {
+
+    }
+    function Message_PickUp() {
+
+
+
+
+    }
+    function Message_SelfPickUp() {
+
+    }
+    function Message_DelayPickUp() {
+
+    }
+
+    function showOrHideMenu1() {
+            document.getElementById("target_3").style.display = "none";
+            document.getElementById("target_4").style.display = "none";
+        //location.href = '/Barcode/Index'; 
+        window.open("/Barcode/Index", "newwindow", "height=100, width=400, top=0,left=0,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no,status=no") 
+        }
+        function showOrHideMenu2() {
+            document.getElementById("target_3").style.display = "none";
+            document.getElementById("target_4").style.display = "none";
+            location.reload();
+        }
+        function showOrHideMenu3() {
+            document.getElementById("target_4").style.display = "none";
+            var v = document.getElementById("target_3");
+            if (v.style.display != "block")
+                v.style.display = "block";
+            else
+                v.style.display = "none";
+        }
+        function showOrHideMenu4() {
+            document.getElementById("target_3").style.display = "none";
+            var v = document.getElementById("target_4");
+            if (v.style.display != "block")
+                v.style.display = "block";
+            else
+                v.style.display = "none";
+        }
+        function showOrHideMenu5() {
+            document.getElementById("target_3").style.display = "none";
+            document.getElementById("target_4").style.display = "none";
+            location.href = '/Employee/Index';
+        }
+
+        function GetClientRect() {
+            document.documentElement.getc
+        }
+
+    function pageload() {
+        
+            var size = {
+            width: window.innerWidth || document.body.clientWidth,
+            height: window.innerHeight || document.body.clientHeight
+            }
+
+        var vw = size.height - size.height * 0.2;
+        $('.box2').css({ 'height': vw + 'px' });
+        $('td').css({ 'height': size.height * 0.1 + 'px' });
+        $('.box').css({ 'width': size.width + 'px' });
+        $('.box1').css({ 'width': size.width + 'px' });
+        $('.box2').css({ 'width': size.width + 'px' });
+        $('.box3').css({ 'width': size.width + 'px' });
+        $('table').css({ 'width': size.width + 'px' });
+        $('tr').css({ 'width': size.width + 'px' });
+        $('.hDiv1').css({ 'width': size.width * 0.2 + 'px' });
+        $('.hDiv2').css({ 'width': size.width * 0.4 * 0.9 + 'px' });
+        $('.hDiv2inp').css({ 'width': size.width * 0.4 * 0.8 + 'px' });
+        $('.hDiv3').css({ 'width': size.width * 0.4 * 0.9 + 'px' });
+        $('.hDiv3serch').css({ 'width': size.width * 0.4 * 0.8 + 'px' });
+        //$('.hDiv1').css({ 'height': size.height * 0.1 + 'px' });
+        //$('.hDiv1img').css({ 'height': size.height * 0.1 * 0.8 + 'px' });
+        //$('.hDiv2').css({ 'height': size.height * 0.1 + 'px' });
+        //$('.hDiv2inp').css({ 'height': size.height * 0.1 * 0.8 + 'px' });
+        //$('.hDiv3').css({ 'height': size.height * 0.1 + 'px' });
+        //$('.hDiv3serch').css({ 'height': size.height * 0.1*0.8 + 'px' });
+        $('.box1').css({ 'height': size.height * 0.1 + 'px' });
+        $('.box3').css({ 'height': size.height * 1 * 0.1 + 'px' });
+    }
+    window.onload = pageload;
+</script>
+<head>
+</head>
+<body>
+    <div class="box">
+        <div id="Div_Top" class="box1">
+            <table style="border:hidden;">
+                <tr style="vertical-align:middle;border:hidden;">
+                    <td class="hDiv1">
+                        <img class="hDiv1img" src="~/image/Head1.png">
+                    </td>
+                    <td class="hDiv2">
+                        <input type="search" class="hDiv2inp" />
+                    </td>
+                    <td class="hDiv3">
+                        <select class="hDiv3serch">
+                            <option>地点1</option>
+                            <option>地点2</option>
+                            <option>地点3</option>
+                            <option>地点4</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="box2" id="midDiv">
+            <table border="1">
+                @for (int i = 0; i < tmp.GroupMsgs.Count; i++)
+                {
+                    <tr style="height:50px;">
+                        <td width="60">
+                            <input type="checkbox" height="50" />
+                            <span style="color:@tmp.GroupMsgs[i].UserIDColor">@tmp.GroupMsgs[i].UserID</span>
+                        </td>
+                        <td width="160">
+                            <span style="color:@tmp.GroupMsgs[i].AreaColor">@tmp.GroupMsgs[i].Area</span><br />
+                            <span>9:00</span>
+                            <span style="color:@tmp.GroupMsgs[i].PickupColor">@tmp.GroupMsgs[i].Pickup</span>
+                        </td>
+                        <td width="20"><input height="50" type="image" onclick="location.href='@Url.Action("Index","AllMsg",new {UserID = tmp.GroupMsgs[i].UserID,Price = tmp.GroupMsgs[i].Price,Note = tmp.GroupMsgs[i].Note,Phone = tmp.GroupMsgs[i].Phone,QQ = tmp.GroupMsgs[i].QQ } )'" value="@tmp.GroupMsgs[i].UserID" src="~/image/详细.png" /></td>
+                        <td width="20">
+                            @if (@tmp.GroupMsgs[i].MsgStateImg == "未读")
+                            {
+                                <input height="50" type="image" src="~/image/phone.png" />
+                            }
+                            else
+                            {
+                                <input height="50" type="image" src="~/image/u2404.png" />
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="box3">
+            <table>
+                <tr>
+                    <td width="30" style="vertical-align:middle;text-align: center;">
+                        <input type="checkbox" />
+                    </td>
+                    <td width="190" style="vertical-align:middle;text-align: center;">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="#" onclick="showOrHideMenu1(); return false;">扫 码</a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="showOrHideMenu2(); return false;">刷 新</a>
+                                </li>
+                                <li style="display:none">
+                                    <a href="#" onclick="showOrHideMenu3(); return false;">电 话</a>
+                                    <ul id="target_3">
+                                        <li><a href="#" onclick="Phone_PickUp(); return false;">取件通知</a></li>
+                                        <li><a href="#" onclick="Phone_SelfPickUp(); return false;">自取通知</a></li>
+                                        <li><a href="#" onclick="Phone_DelayPickUp(); return false;">顺延通知</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="showOrHideMenu4(); return false;">短 信</a>
+                                    <ul id="target_4">
+                                        <li><a href="#" onclick="Message_PickUp(); return false;">取件通知</a></li>
+                                        <li><a href="#" onclick="Message_SelfPickUp(); return false;">自取通知</a></li>
+                                        <li><a href="#" onclick="Message_DelayPickUp(); return false;">顺延通知</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </td>
+                    <td width="50" style="vertical-align:middle;text-align:left;">
+                        <img class="hDiv1img" onclick="showOrHideMenu5()" src="~/image/u2363.png" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
